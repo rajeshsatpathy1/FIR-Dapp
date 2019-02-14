@@ -65,11 +65,12 @@ contract Capstone {
         string _Name,
         string indexed _Adhar,
         string _Subject,
-        string _details
+        string _details,
+        Status _status
     );
 
-    function InitializeOfficerAccount (address _account) public OwnerOnly(_account) {
-
+    function InitializeOfficerAccount (address _account, uint256 _policestationcode) public OwnerOnly(_account) {
+        AddressToPolicestationcode[_account] = _policestationcode;
     }
 
     function ApproveDeclineFir (uint _id, bool _consent) public OfficerOnly(msg.sender, OfficerToPolicestationcode[msg.sender]) {
@@ -78,6 +79,8 @@ contract Capstone {
         } else {
             FIR[_id].Fir.Status = Status.declined;
         }
+
+        emit FirComplain(FIR[_id].Fir.Address, _id, FIR[_id].Fir.Name, FIR[_id].Fir.Adhar, FIR[_id].Fir.Subject, FIR[_id].Fir.Details, FIR[_id].Fir.status);
     }
 
     function PlaceFir (
@@ -99,7 +102,6 @@ contract Capstone {
         Status _status = Status.pending;
         uint id = Fir.push(FIR(_PlaceOfOccurance,_Name, _Adhar, _Subject, _Address, _Details, _Email, _MobileNo, _Telephone, _Age, _Pin, _topic, _severity, _status, _sex)) - 1;
         FIRToAddress[id] = msg.sender;
-        emit FirComplain(msg.sender, id, _Name, _Adhar, _Subject, _Details);
+        emit FirComplain(msg.sender, id, _Name, _Adhar, _Subject, _Details, _status);
     }
-
 }
