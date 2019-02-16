@@ -1,4 +1,4 @@
-var Migrations = artifacts.require("./Migrations.sol");
+var Migrations = artifacts.require("./maincontract");
 
 module.exports = function(deployer) {
   deployer.deploy(Migrations);

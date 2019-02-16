@@ -16,92 +16,90 @@ contract Capstone {
     
     address private owner;
 
-    enum Topic {crime, cyber, miscellaneous}
-    enum Severity {low, moderate, extreme}
-    enum Status {lodged, pending, declined}
-    enum Sex {Male, Female}
-
-    struct FIR {
-        string PlaceOfOccurance;
-        string Name;
-        string Adhar;        
-        string Subject;
-        string Address;
-        string details;
-        string Email;
-        int256 MobileNo;
-        int256 Telephone;
-        int8 Age;
-        int8 Pin;
-        Topic topic;
-        Severity severity;
-        Status status;
-        Sex sex;
-    }
-
-    FIR[] public Fir;
-
-    mapping (address => uint256) public AddressToPolicestationcode;
-    mapping (uint => address) private FIRToAddress;
-    mapping (address => uint) public OfficerToPolicestationcode;
-
     constructor() public{
         owner = msg.sender;
     }
+
+    enum Topic {crime, cyber, miscellaneous}
+    enum Severity {low, moderate, extreme}
+    enum Status {lodged, pending, declined}
+
+    struct Officer {
+        address Officer;
+        string Name;
+        string StationName;
+        string StationAddress;
+        uint256 Pin;
+        uint256 StationCode;
+        bool OfficerExists;
+    }
+
+    struct FIR {
+        address Compliant;
+        string Name;
+        string Adhar;        
+        string Details;
+        uint256 StationCode;
+        Topic topic;
+        Severity severity;
+        Status status;
+    }
+
+    mapping (address => Officer) public AddressToOfficer;
+    mapping (address => FIR) private AddressToFir;
 
     modifier OwnerOnly(address _account){
         require (_account == owner, "Unauthorize access!");
         _;
     }
 
-    modifier OfficerOnly(address _account, uint _stationcode){
-        require(OfficerToPolicestationcode[_account] == _stationcode, "Unauthorize access!");
+    function InitializeOfficerAccount (
+            address _account,
+            string memory _Name,
+            string memory _StationName,
+            string memory _StationAddress,
+            uint256 _Pin,
+            uint256 _StationCode
+        ) public OwnerOnly(msg.sender) {
+            bool exists = true;
+            AddressToOfficer[_account] = Officer( _account, _Name, _StationName, _StationAddress, _Pin, _StationCode, exists);
+    }
+
+    modifier AuthorizeOfficerOnly(address _officer, address _compliant){
+        require(AddressToOfficer[_officer].OfficerExists == true, "Unauthorize access!");
+        require(AddressToFir[_compliant].StationCode == AddressToOfficer[_officer].StationCode, "Unathorize access!");
         _;
     }
 
-    event FirComplain (
+     event FirComplain (
         address indexed _From,
-        uint256 indexed _Id,
         string _Name,
         string indexed _Adhar,
-        string _Subject,
         string _details,
         Status _status
     );
 
-    function InitializeOfficerAccount (address _account, uint256 _policestationcode) public OwnerOnly(_account) {
-        AddressToPolicestationcode[_account] = _policestationcode;
-    }
-
-    function ApproveDeclineFir (uint _id, bool _consent) public OfficerOnly(msg.sender, OfficerToPolicestationcode[msg.sender]) {
-        if(_consent){
-            FIR[_id].Fir.Status = Status.lodged;
-        } else {
-            FIR[_id].Fir.Status = Status.declined;
-        }
-
-        emit FirComplain(FIR[_id].Fir.Address, _id, FIR[_id].Fir.Name, FIR[_id].Fir.Adhar, FIR[_id].Fir.Subject, FIR[_id].Fir.Details, FIR[_id].Fir.status);
-    }
-
     function PlaceFir (
-        string memory _PlaceOfOccurance,
         string memory _Name,
         string memory _Adhar,
-        string memory _Subject,
-        string memory _Address,
         string memory _Details,
-        string memory _Email,
-        int256 _MobileNo,
-        int256 _Telephone,
-        int8 _Age,
-        int8 _Pin,
+        uint256 _StationCode,
         Topic _topic,
-        Severity _severity,
-        Sex _sex
+        Severity _severity
     ) public {
         Status _status = Status.pending;
-        uint id = Fir.push(FIR(_PlaceOfOccurance,_Name, _Adhar, _Subject, _Address, _Details, _Email, _MobileNo, _Telephone, _Age, _Pin, _topic, _severity, _status, _sex)) - 1;
-        FIRToAddress[id] = msg.sender;
-        emit FirComplain(msg.sender, id, _Name, _Adhar, _Subject, _Details, _status);
+        AddressToFir[msg.sender] = FIR(msg.sender, _Name, _Adhar, _Details, _StationCode, _topic, _severity, _status);
+        emit FirComplain(msg.sender, _Name, _Adhar, _Details, _status);
+    }
+
+    function ApproveDeclineFir (address _compliant, bool _consent) public AuthorizeOfficerOnly(msg.sender, _compliant) {
+        if(_consent){
+            AddressToFir[_compliant].status = Status.lodged;
+        } else {
+            AddressToFir[_compliant].status = Status.declined;
+        }
+
+        emit FirComplain(AddressToFir[_compliant].Compliant, AddressToFir[_compliant].Name, AddressToFir[_compliant].Adhar, AddressToFir[_compliant].Details, AddressToFir[_compliant].status);
+        delete AddressToFir[_compliant];
     }
 }
