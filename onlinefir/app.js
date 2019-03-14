@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const config = require('./config/database');
 
 //connect to database
-mongoose.connect(config.database, { useNewUrlParser: true });
+mongoose.connect(config.database, { useCreateIndex: true, useNewUrlParser: true });
 
 //On connection
 mongoose.connection.on('connected', function () {
