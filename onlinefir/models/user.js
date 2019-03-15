@@ -25,14 +25,49 @@ const UserSchema = mongoose.Schema({
     gender: {
         type: String,
         required: true,
-        enum: ["male", "female"]
+        enum: ["male", "female", "other"]
+    },
+    maritalStatus: {
+        type: String,
+        required: true
     },
     phoneNumber: {
         type: String,
         required: true,
+        unique: true
     },
     email: {
-        type: String
+        type: String,
+        required: true,
+        unique: true
+    },
+    address: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    district: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    pincode: {
+        type: String,
+        required: true
+    },
+    aadhaar: {
+        type: String,
+        required: true
     },
     password: {
         type: String,
