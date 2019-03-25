@@ -23,6 +23,7 @@ router.post('/register', function (req, res, next) {
         state: req.body.state,
         country: req.body.country,
         pincode: req.body.pincode,
+        aadhar: req.body.aadhar,
         password: req.body.password
     });
 

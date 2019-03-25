@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
   state: String;
   country: String;
   pincode: String;
+  aadhar: String;
   password: String;
 
   constructor() { }
