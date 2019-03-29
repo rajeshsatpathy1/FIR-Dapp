@@ -26,7 +26,6 @@ router.post('/register', function (req, res, next) {
         aadhar: req.body.aadhar,
         password: req.body.password
     });
-
     User.addUser(newUser, function (err, user) {
         if (err) {
             res.json({ success: false, msg: 'Failed to register user' });

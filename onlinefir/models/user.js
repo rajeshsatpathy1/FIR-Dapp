@@ -65,7 +65,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    aadhaar: {
+    aadhar: {
         type: String,
         required: true
     },
