@@ -10,6 +10,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
+import { ValidateService } from './services/validate.service';
+import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,9 +25,10 @@ import { ProfileComponent } from './components/profile/profile.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    FlashMessagesModule
   ],
-  providers: [],
+  providers: [ValidateService, FlashMessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

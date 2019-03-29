@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ValidateService } from 'src/app/services/validate.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-register',
@@ -25,13 +27,20 @@ export class RegisterComponent implements OnInit {
   pincode: String;
   aadhar: String;
   password: String;
+  confirmPassword: String;
 
-  constructor() { }
+  constructor(private validateService: ValidateService, private flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
   }
 
   onRegisterSubmit() {
+    if (this.year == undefined || this.month == undefined || this.day == undefined || this.confirmPassword == undefined) {
+      window.scrollTo(0, 0);
+      this.flashMessage.show("Please fill in all the fields", { cssClass: 'alert-danger', timeout: 4000 });
+      return false;
+    }
+
     const dateOfBirth = new Date(Number(this.year), Number(this.month), Number(this.day));
     const user = {
       firstName: this.firstName,
@@ -50,6 +59,76 @@ export class RegisterComponent implements OnInit {
       pincode: this.pincode,
       aadhar: this.aadhar,
       password: this.password
+    }
+
+    // Required fields
+    if (!this.validateService.validateRegister(user)) {
+      window.scrollTo(0, 0);
+      this.flashMessage.show("Please fill in all the fields", { cssClass: 'alert-danger', timeout: 4000 });
+      return false;
+    }
+
+    // Firstname validation
+    if (!this.validateService.validateName(user.firstName)) {
+      window.scrollTo(0, 0);
+      this.flashMessage.show("First name should include only a-z and A-Z and be between 2-30 characters", { cssClass: 'alert-danger', timeout: 4000 });
+      return false;
+    }
+
+    // Lastname validation
+    if (!this.validateService.validateName(user.lastName)) {
+      window.scrollTo(0, 0);
+      this.flashMessage.show("Last name should include only a-z and A-Z and be between 2-30 characters", { cssClass: 'alert-danger', timeout: 4000 });
+      return false;
+    }
+
+    // Username validation
+    if (!this.validateService.validateUsername(user.username)) {
+      window.scrollTo(0, 0);
+      this.flashMessage.show("Username should include only a-z, A-Z, 0-9 and '_'(underscore) and be between 2-15 characters", { cssClass: 'alert-danger', timeout: 4000 });
+      return false;
+    }
+
+    // Phone number validation
+    if (!this.validateService.validatePhonenumber(user.phoneNumber)) {
+      window.scrollTo(0, 0);
+      this.flashMessage.show("Please enter 10 digits only without spaces", { cssClass: 'alert-danger', timeout: 4000 });
+      return false;
+    }
+
+    // Email validation
+    if (!this.validateService.validateEmail(user.email)) {
+      window.scrollTo(0, 0);
+      this.flashMessage.show("Please enter valid email", { cssClass: 'alert-danger', timeout: 4000 });
+      return false;
+    }
+
+    // Pincode validation
+    if (!this.validateService.validatePincode(user.pincode)) {
+      window.scrollTo(0, 0);
+      this.flashMessage.show("Please enter valid pincode", { cssClass: 'alert-danger', timeout: 4000 });
+      return false;
+    }
+
+    // Aadhar number validation
+    if (!this.validateService.validateAadhar(user.aadhar)) {
+      window.scrollTo(0, 0);
+      this.flashMessage.show("Please enter valid Aadhar number", { cssClass: 'alert-danger', timeout: 4000 });
+      return false;
+    }
+
+    // Password validation
+    if (!this.validateService.validatePassword(user.password)) {
+      window.scrollTo(0, 0);
+      this.flashMessage.show("Password should include at least one digit(0-9) and one special character(! @ # $ % ^ & *) and be between 6-16 characters", { cssClass: 'alert-danger', timeout: 4000 });
+      return false;
+    }
+
+    // Password Confirmation
+    if (!this.validateService.confirmPassword(user.password, this.confirmPassword)) {
+      window.scrollTo(0, 0);
+      this.flashMessage.show("Password did not match, please fill in again", { cssClass: 'alert-danger', timeout: 4000 });
+      return false;
     }
   }
 }
