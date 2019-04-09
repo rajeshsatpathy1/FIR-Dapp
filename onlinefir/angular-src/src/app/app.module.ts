@@ -15,7 +15,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
-import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages'
+import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
+import { DashboardComponent } from './components/dashboard/dashboard.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messag
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -3,22 +3,21 @@
     <div class="col-lg-6">
       <div class="form-group">
         <label class="col-form-label" for="firstName">First Name</label>
-        <input type="text" [(ngModel)]="firstName" firstName="firstName" class="form-control"
-          placeholder="Enter your first name" name="firstName">
+        <input type="text" [(ngModel)]="firstName" class="form-control" placeholder="Enter your first name"
+          name="firstName">
       </div>
     </div>
     <div class="col-lg-6">
       <div class="form-group">
         <label class="col-form-label" for="lastName">Last Name</label>
-        <input type="text" [(ngModel)]="lastName" lastName="lastName" class="form-control"
-          placeholder="Enter your last name" name="lastName">
+        <input type="text" [(ngModel)]="lastName" class="form-control" placeholder="Enter your last name"
+          name="lastName">
       </div>
     </div>
   </div>
   <div class="form-group">
     <label class="col-form-label" for="username">Username</label>
-    <input type="text" [(ngModel)]="username" username="username" class="form-control"
-      placeholder="Choose your username" name="username">
+    <input type="text" [(ngModel)]="username" class="form-control" placeholder="Choose your username" name="username">
   </div>
   <div class="row">
     <div class="col-lg-2">
@@ -31,7 +30,7 @@
     </div>
     <div class="col-lg-3">
       <div class="form-group">
-        <select class="form-control" [(ngModel)]="day" day="day" name="day" placeholder="Select date">
+        <select class="form-control" [(ngModel)]="day" name="day" placeholder="Select date">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -71,7 +70,7 @@
     </div>
     <div class="col-lg-3">
       <div class="form-group">
-        <select class="form-control" [(ngModel)]="month" month="month" name="month" placeholder="Select month">
+        <select class="form-control" [(ngModel)]="month" name="month" placeholder="Select month">
           <option value="0">Jan</option>
           <option value="1">Feb</option>
           <option value="2">Mar</option>
@@ -92,7 +91,7 @@
     </div>
     <div class="col-lg-3">
       <div class="form-group">
-        <select class="form-control" [(ngModel)]="year" year="year" name="year" placeholder="Select year">
+        <select class="form-control" [(ngModel)]="year" name="year" placeholder="Select year">
           <option>2015</option>
           <option>2014</option>
           <option>2013</option>
@@ -218,22 +217,19 @@
       <label class="col-form-label" for="gender">Gender</label>
       <div class="form-check" style="margin-top: 1.5%;">
         <label class="form-check-label" for="male" style="width: 33%;">
-          <input type="radio" [(ngModel)]="gender" gender="gender" class="form-check-input" name="gender" value="male"
-            checked="">Male
+          <input type="radio" [(ngModel)]="gender" class="form-check-input" name="gender" value="male" checked="">Male
         </label>
         <label class="form-check-label" for="female" style="width: 33%;">
-          <input type="radio" [(ngModel)]="gender" gender="gender" class="form-check-input" name="gender"
-            value="female">Female
+          <input type="radio" [(ngModel)]="gender" class="form-check-input" name="gender" value="female">Female
         </label>
         <label class="form-check-label" for="other" style="width: 33%;">
-          <input type="radio" [(ngModel)]="gender" gender="gender" class="form-check-input" name="gender"
-            value="other">Other
+          <input type="radio" [(ngModel)]="gender" class="form-check-input" name="gender" value="other">Other
         </label>
       </div>
     </div>
     <div class="col-lg-6">
       <label class="col-form-label" for="maritalStatus">Marital Status</label>
-      <select class="custom-select" [(ngModel)]="maritalStatus" maritalStatus="maritalStatus" name="maritalStatus">
+      <select class="custom-select" [(ngModel)]="maritalStatus" name="maritalStatus">
         <option value="single">Never Married</option>
         <option value="married">married</option>
         <option value="widowed">Widowed</option>
@@ -248,21 +244,20 @@
     <div class="col-lg-6">
       <div class="form-group">
         <label class="col-form-label" for="phoneNumber">Phone Number</label>
-        <input type="text" [(ngModel)]="phoneNumber" phoneNumber="phoneNumber" class="form-control"
-          placeholder="Enter your phone number" name="phoneNumber">
+        <input type="text" [(ngModel)]="phoneNumber" class="form-control" placeholder="Enter your phone number"
+          name="phoneNumber">
       </div>
     </div>
     <div class="col-lg-6">
       <div class="form-group">
         <label class="col-form-label" for="email">Email</label>
-        <input type="email" [(ngModel)]="email" email="email" class="form-control" placeholder="Enter your Email"
-          name="email">
+        <input type="email" [(ngModel)]="email" class="form-control" placeholder="Enter your Email" name="email">
       </div>
     </div>
   </div>
   <div class="form-group">
     <label for="address">Address</label>
-    <textarea [(ngModel)]="address" address="address" class="form-control" name="address" rows="3" placeholder="Enter house number / house name / flat number / room number
+    <textarea [(ngModel)]="address" class="form-control" name="address" rows="3" placeholder="Enter house number / house name / flat number / room number
 Enter street name / street number
 Enter Area name / area code"></textarea>
   </div>
@@ -270,15 +265,13 @@ Enter Area name / area code"></textarea>
     <div class="col-lg-6">
       <div class="form-group">
         <label class="col-form-label" for="city">City</label>
-        <input type="text" [(ngModel)]="city" city="city" class="form-control" placeholder="Enter your city"
-          name="city">
+        <input type="text" [(ngModel)]="city" class="form-control" placeholder="Enter your city" name="city">
       </div>
     </div>
     <div class="col-lg-6">
       <div class="form-group">
         <label class="col-form-label" for="pincode">Pincode</label>
-        <input type="text" [(ngModel)]="pincode" pincode="pincode" class="form-control" placeholder="Enter your pincode"
-          name="pincode">
+        <input type="text" [(ngModel)]="pincode" class="form-control" placeholder="Enter your pincode" name="pincode">
       </div>
     </div>
   </div>
@@ -286,45 +279,42 @@ Enter Area name / area code"></textarea>
     <div class="col-lg-4">
       <div class="form-group">
         <label class="col-form-label" for="district">District</label>
-        <input type="text" [(ngModel)]="district" district="district" class="form-control"
-          placeholder="Enter your district" name="district">
+        <input type="text" [(ngModel)]="district" class="form-control" placeholder="Enter your district"
+          name="district">
       </div>
     </div>
     <div class="col-lg-4">
       <div class="form-group">
         <label class="col-form-label" for="state">State</label>
-        <input type="text" [(ngModel)]="state" state="state" class="form-control" placeholder="Enter your state"
-          name="state">
+        <input type="text" [(ngModel)]="state" class="form-control" placeholder="Enter your state" name="state">
       </div>
     </div>
     <div class="col-lg-4">
       <div class="form-group">
         <label class="col-form-label" for="country">Country</label>
-        <input type="text" [(ngModel)]="country" country="country" class="form-control" placeholder="Enter your country"
-          name="country">
+        <input type="text" [(ngModel)]="country" class="form-control" placeholder="Enter your country" name="country">
       </div>
     </div>
   </div>
   <hr class="my-4">
   <div class="form-group">
     <label class="col-form-label" for="aadhar">Aadhar - Unique Identification Number</label>
-    <input type="text" [(ngModel)]="aadhar" aadhar="aadhar" class="form-control" placeholder="Enter 12-digit number"
-      name="aadhar">
+    <input type="text" [(ngModel)]="aadhar" class="form-control" placeholder="Enter 12-digit number" name="aadhar">
   </div>
   <hr class="my-4">
   <div class="row">
     <div class="col-lg-6">
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" [(ngModel)]="password" password="password" class="form-control" name="password"
+        <input type="password" [(ngModel)]="password" class="form-control" name="password"
           placeholder="Choose your password">
       </div>
     </div>
     <div class="col-lg-6">
       <div class="form-group">
         <label for="confirmPassword">Confirm Password</label>
-        <input type="password" [(ngModel)]="confirmPassword" confirmPassword="confirmPassword" class="form-control"
-          name="confirmPassword" placeholder="Re-enter your password">
+        <input type="password" [(ngModel)]="confirmPassword" class="form-control" name="confirmPassword"
+          placeholder="Re-enter your password">
       </div>
     </div>
   </div>
