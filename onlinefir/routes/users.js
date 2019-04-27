@@ -14,11 +14,18 @@ router.post('/register', function (req, res, next) {
         username: req.body.username,
         dateOfBirth: req.body.dateOfBirth,
         gender: req.body.gender,
+        maritalStatus: req.body.maritalStatus,
         phoneNumber: req.body.phoneNumber,
         email: req.body.email,
+        address: req.body.address,
+        city: req.body.city,
+        district: req.body.district,
+        state: req.body.state,
+        country: req.body.country,
+        pincode: req.body.pincode,
+        aadhar: req.body.aadhar,
         password: req.body.password
     });
-
     User.addUser(newUser, function (err, user) {
         if (err) {
             res.json({ success: false, msg: 'Failed to register user' });
