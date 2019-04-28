@@ -13,3 +13,8 @@ angular client: make sure you're in directory capstone/onlinefir/angular-src and
 ```
 ng serve
 ```
+
+Run ganache install truffle and download meta mask plugin in your browser (recommended Chrome).
+```
+truffle migrate --reset or truffle migrate --network development
+```
