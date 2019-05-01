@@ -18,7 +18,10 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
-import { DashboardComponent } from './components/dashboard/dashboard.component'
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PlaceFIRComponent } from './components/place-fir/place-fir.component';
+import { TrackFIRComponent } from './components/track-fir/track-fir.component';
+import { OfficerComponent } from './components/officer/officer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component'
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
-    DashboardComponent
+    DashboardComponent,
+    PlaceFIRComponent,
+    TrackFIRComponent,
+    OfficerComponent
   ],
   imports: [
     BrowserModule,

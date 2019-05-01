@@ -1,0 +1,27 @@
+<form (submit)=onOfficerSubmit()>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="form-group">
+        <label class="col-form-label" for="firId">FIR ID</label>
+        <input type="text" [(ngModel)]="firId" class="form-control" placeholder="Enter FIR ID" name="firId">
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <label class="col-form-label" for="status">Status</label>
+      <select class="custom-select" [(ngModel)]="status" name="status">
+        <option value=0>Lodged</option>
+        <option value=1>Pending</option>
+        <option value=2>Declined</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-3">
+      <a class="btn btn-success" style="width: 100%; margin-bottom:10px;" [routerLink]="['/']" role="button">Cancel</a>
+    </div>
+    <div class="col-lg-3">
+      <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom:10px;">Submit</button>
+    </div>
+  </div>
+</form>

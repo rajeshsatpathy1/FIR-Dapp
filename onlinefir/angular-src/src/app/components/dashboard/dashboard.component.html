@@ -1,3 +1,12 @@
-<p>
-  dashboard works!
-</p>
+<form (submit)="onLoginSubmit()">
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <div class="jumbotron bg-primary" style="padding-bottom: 10%; padding-top: 10%">
+        <a class="btn btn-success btn-block" [routerLink]="['/place-fir']" role="button">Place FIR</a>
+        <a class="btn btn-success btn-block" [routerLink]="['/track-fir']" role="button">Track FIR</a>
+        <a class="btn btn-success btn-block" [routerLink]="['/profile']" role="button">View Profile</a>
+      </div>
+    </div>
+  </div>
+</form>

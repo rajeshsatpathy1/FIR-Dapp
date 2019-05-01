@@ -1,0 +1,42 @@
+<form (submit)=onPlacefirSubmit()>
+  <div class="row">
+    <div class="col-lg-4">
+      <label class="col-form-label" for="topic">Topic</label>
+      <select class="custom-select" [(ngModel)]="topic" name="topic">
+        <option value=0>Crime</option>
+        <option value=1>Cyber</option>
+        <option value=2>Miscellaneous</option>
+      </select>
+    </div>
+    <div class="col-lg-4">
+      <label class="col-form-label" for="severity">Severity</label>
+      <select class="custom-select" [(ngModel)]="severity" name="severity">
+        <option value=0>Low</option>
+        <option value=1>Moderate</option>
+        <option value=2>Extreme</option>
+      </select>
+    </div>
+    <div class="col-lg-4">
+      <div class="form-group">
+        <label class="col-form-label" for="stationPincode">Station Pincode</label>
+        <input type="text" [(ngModel)]="stationPincode" class="form-control" placeholder="Enter Station pincode"
+          name="stationPincode">
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="details">Complaint details</label>
+    <textarea [(ngModel)]="details" class="form-control" name="details" rows="20"
+      placeholder="Enter details of the complaint"></textarea>
+  </div>
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-3">
+      <a class="btn btn-success" style="width: 100%; margin-bottom:10px;" [routerLink]="['/dashboard']"
+        role="button">Cancel</a>
+    </div>
+    <div class="col-lg-3">
+      <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom:10px;">Submit</button>
+    </div>
+  </div>
+</form>
