@@ -3,6 +3,7 @@ import { ValidateService } from '../../services/validate.service';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { FirecontractService } from '../../services/firecontract.service';
 
 @Component({
   selector: 'app-place-fir',
@@ -20,7 +21,8 @@ export class PlaceFIRComponent implements OnInit {
     private validateService: ValidateService,
     private flashMessage: FlashMessagesService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private firecontractService: FirecontractService
   ) { }
 
   ngOnInit() {
@@ -52,7 +54,8 @@ export class PlaceFIRComponent implements OnInit {
       return false;
     }
 
-    console.log(fir);
+    this.firecontractService.placeFIR(fir);
+
   }
 
 }

@@ -10,15 +10,14 @@ import { createContract } from '../ethereum/firContract';
 export class FirecontractService {
 
   public address: ""
-  WEB3 : Web3
+  WEB3: Web3
 
 
   constructor() { }
 
-  async testfunc(address: string) {
-    const contract = createContract("0x5bfdD15A1C56D74c5f99C6F61392bF7eEaA6EdA6");
+  async placeFIR(fir) {
+    const contract = createContract("0x7D74247DCA2f16e055bBb85601FdaFC5776E4506");
     let currentAccount;
-
     web3.eth.getAccounts((err, accounts) => {
       if (err) console.log(err);
       else if (!accounts.length) console.log('No Metamask accounts found');
@@ -27,10 +26,10 @@ export class FirecontractService {
       }
     })
 
-    const name = await contract.methods.PlaceFir("pratyush", "00000", "Stolen Car", 50, 0, 0).send({ from: "0x13b41cB888c9Ea3c0BF1677134CAE2f7db152870" }, (error, result) => {
+    const name = await contract.methods.PlaceFir(fir.name, fir.aadhar, fir.details, fir.stationCode, fir.topic, fir.severity).send({ from: "0x7FfF7FeA9FAbA70F66bDEa47B946147366a21E74" }, (error, result) => {
       if (error) {
         console.log(error);
-      }else{
+      } else {
         console.log(result);
       }
     })
