@@ -16,7 +16,7 @@ export class FirecontractService {
   constructor() { }
 
   async placeFIR(fir) {
-    const contract = createContract("0x7D74247DCA2f16e055bBb85601FdaFC5776E4506");
+    const contract = createContract("0x2e13e625AcE67990674Dc1FA3E756479332F6d47");
     let currentAccount;
     web3.eth.getAccounts((err, accounts) => {
       if (err) console.log(err);
@@ -26,7 +26,7 @@ export class FirecontractService {
       }
     })
 
-    const name = await contract.methods.PlaceFir(fir.name, fir.aadhar, fir.details, fir.stationCode, fir.topic, fir.severity).send({ from: "0x7FfF7FeA9FAbA70F66bDEa47B946147366a21E74" }, (error, result) => {
+    const name = await contract.methods.PlaceFir(fir.name, fir.aadhar, fir.details, fir.stationCode, fir.topic, fir.severity).send({ from: "0xB6422Ef13B4b16508B9dc649e633254ba3c6Edf7" }, (error, result) => {
       if (error) {
         console.log(error);
       } else {
@@ -34,5 +34,25 @@ export class FirecontractService {
       }
     })
     console.log('shots fired!');
+  }
+
+  
+  trackFir(user){
+    const contract = createContract("0x2e13e625AcE67990674Dc1FA3E756479332F6d47");
+    var a = contract.events.FirComplain({
+      filter: {_From: '0xB6422Ef13B4b16508B9dc649e633254ba3c6Edf7'},
+      fromBlock: 0,
+      toBlock: 'latest'
+    }, function(error, event){
+      if(error){
+        console.log(error);
+      }else{
+        console.log('blockHash:' + event['blockHash'] + ' ' + 
+        'blockNumber: ' + event['blockNumber'] + ' ' + 
+        '\nCrime in the block:' + event['returnValues'][3]); //Send this data to track FIRs on HTML page
+        //console.log(event);
+      }
+    })
+    //console.log(a);
   }
 }
