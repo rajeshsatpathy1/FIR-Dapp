@@ -16,17 +16,18 @@ export class FirecontractService {
   constructor() { }
 
   async placeFIR(fir) {
-    const contract = createContract("0x2e13e625AcE67990674Dc1FA3E756479332F6d47");
+    const contract = createContract("0x3F336239Ab442DE2018d93dc22885112f1875672");
     let currentAccount;
     web3.eth.getAccounts((err, accounts) => {
       if (err) console.log(err);
       else if (!accounts.length) console.log('No Metamask accounts found');
       else {
-        currentAccount = accounts[0];
+        currentAccount = web3.eth.accounts[0];
+        console.log(web3.eth.accounts[0]);
       }
     })
 
-    const name = await contract.methods.PlaceFir(fir.name, fir.aadhar, fir.details, fir.stationCode, fir.topic, fir.severity).send({ from: "0xB6422Ef13B4b16508B9dc649e633254ba3c6Edf7" }, (error, result) => {
+    const name = await contract.methods.PlaceFir(fir.name, fir.aadhar, fir.details, fir.stationCode, fir.topic, fir.severity).send({ from: "0x0F2C298990e6b8A2049DbC1aAefB191b9cE9F5E5" }, (error, result) => {
       if (error) {
         console.log(error);
       } else {
@@ -38,9 +39,9 @@ export class FirecontractService {
 
   
   trackFir(user){
-    const contract = createContract("0x2e13e625AcE67990674Dc1FA3E756479332F6d47");
+    const contract = createContract("0x3F336239Ab442DE2018d93dc22885112f1875672");
     var a = contract.events.FirComplain({
-      filter: {_From: '0xB6422Ef13B4b16508B9dc649e633254ba3c6Edf7'},
+      filter: {_From: '0x0F2C298990e6b8A2049DbC1aAefB191b9cE9F5E5'},
       fromBlock: 0,
       toBlock: 'latest'
     }, function(error, event){
