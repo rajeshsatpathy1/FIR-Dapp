@@ -1,3 +1,56 @@
-<p>
-  profile works!
-</p>
+<div *ngIf="user">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <div class="jumbotron bg-primary" style="padding-bottom: 4%; padding-top: 4%">
+        <h3 class="text-success">Your Profile</h3>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            First name: {{ user.firstName }}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Last name: {{ user.lastName }}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Aadhar ID: {{ user.aadhar }}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Username: {{ user.username }}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Gender: {{ user.gender }}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Date of birth: {{ user.dateOfBirth | slice:0:10}}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Marital Status: {{ user.maritalStatus }}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Email: {{ user.email }}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Address: {{ user.address }}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            City: {{ user.city }}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Pincode: {{ user.pincode }}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            District: {{ user.district }}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            State: {{ user.state }}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Country: {{ user.country }}
+          </li>
+        </ul>
+        <br>
+        <a class="btn btn-secondary btn-block" [routerLink]="['/dashboard']" role="button">Back</a>
+      </div>
+    </div>
+  </div>
+</div>

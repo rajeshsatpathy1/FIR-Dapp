@@ -9,19 +9,13 @@ import { CodegenComponentFactoryResolver } from '@angular/core/src/linker/compon
 })
 export class TrackFIRComponent implements OnInit {
 
-  topic: Number;
-  severity: Number;
-  stationPincode: String;
-  details: String;
-
+  items: any[] = [];
+  showtable = false;
   constructor(private firecontractService: FirecontractService) { }
 
   ngOnInit() {
-  }
-
-  trackFir(){
     var user = JSON.parse(localStorage.getItem("user"));
-    console.log('entered');
+    localStorage.setItem('firs', null);
     //const name = user.firstName + " " + user.lastName;
     //const stcode = parseInt(this.stationPincode.toString());
     //console.log(this.stationPincode + " " + typeof(this.stationPincode));
@@ -33,9 +27,26 @@ export class TrackFIRComponent implements OnInit {
       //topic: this.topic,
       //severity: this.severity
     }
-
-    const ans =this.firecontractService.trackFir(fir);
-    console.log(ans + "ljh");
+    this.firecontractService.trackFir(fir);
   }
 
+  onClick() {
+    console.log(localStorage.getItem("firs"));
+    let firs = localStorage.getItem("firs").split("&");
+    var user = JSON.parse(localStorage.getItem("user"));
+    const name = user.firstName + " " + user.lastName;
+    console.log(firs);
+    var f;
+    for (f = 0; f < firs.length; f++) {
+      if (firs[f] == "null") continue;
+      let x = JSON.parse(firs[f])
+      if (x.status == 0) x.status = "Lodged";
+      if (x.status == 1) x.status = "Pending";
+      if (x.status == 2) x.status = "Closed";
+      if (x.name == name) {
+        this.items.push(x);
+      }
+    }
+    this.showtable = true;
+  }
 }

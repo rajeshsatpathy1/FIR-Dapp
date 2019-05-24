@@ -24,7 +24,9 @@ router.post('/register', function (req, res, next) {
         country: req.body.country,
         pincode: req.body.pincode,
         aadhar: req.body.aadhar,
-        password: req.body.password
+        password: req.body.password,
+        userType: req.body.userType,
+        stationCode: req.body.stationCode
     });
     User.addUser(newUser, function (err, user) {
         if (err) {
@@ -76,5 +78,17 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), functio
     res.json({ user: req.user });
 });
 
+//approve
+router.post('/approve', function (req, res, next) {
+    let officer = req.body;
+    User.updateUser(officer, function (err, user) {
+        if (err) {
+            res.json({ success: false, msg: 'user not found' });
+        }
+        else {
+            res.json({ success: true, msg: 'Officer approved' });
+        }
+    });
+});
 
 module.exports = router;

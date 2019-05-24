@@ -1,0 +1,27 @@
+<form (submit)=onAdminSubmit()>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="form-group">
+        <label class="col-form-label" for="username">Officer username</label>
+        <input type="text" [(ngModel)]="username" class="form-control" placeholder="Enter officer username"
+          name="username">
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="form-group">
+        <label class="col-form-label" for="station">Officer station code</label>
+        <input type="text" [(ngModel)]="station" class="form-control" placeholder="Enter officer station code"
+          name="station">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-3">
+      <button class="btn btn-success" style="width: 100%; margin-bottom:10px;" (click)="logout()">Cancel</button>
+    </div>
+    <div class="col-lg-3">
+      <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom:10px;">Approve</button>
+    </div>
+  </div>
+</form>

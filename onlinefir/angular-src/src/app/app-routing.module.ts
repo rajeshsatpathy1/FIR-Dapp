@@ -8,6 +8,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PlaceFIRComponent } from './components/place-fir/place-fir.component';
 import { TrackFIRComponent } from './components/track-fir/track-fir.component';
 import { OfficerComponent } from './components/officer/officer.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { ApproveComponent } from './components/approve/approve.component';
+import { OfficerDashboardComponent } from './components/officer-dashboard/officer-dashboard.component';
+import { StationComponent } from './components/station/station.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,7 +21,11 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'place-fir', component: PlaceFIRComponent },
   { path: 'track-fir', component: TrackFIRComponent },
-  { path: 'officer', component: OfficerComponent }
+  { path: 'officer', component: OfficerComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'approve', component: ApproveComponent },
+  { path: 'officer-dashboard', component: OfficerDashboardComponent },
+  { path: 'station', component: StationComponent }
 ];
 
 @NgModule({

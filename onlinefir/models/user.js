@@ -72,6 +72,14 @@ const UserSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    userType: {
+        type: String,
+        required: true
+    },
+    stationCode: {
+        type: String,
+        required: true
     }
 });
 
@@ -84,6 +92,12 @@ module.exports.getUserById = function (id, callback) {
 module.exports.getUserByUsername = function (username, callback) {
     const query = { username: username }
     User.findOne(query, callback);
+}
+
+module.exports.updateUser = function (officer, callback) {
+    query = { username: officer.username }
+    update = { userType: "officer", stationCode: officer.stationCode }
+    User.update(query, { $set: update }, {}, callback);
 }
 
 module.exports.addUser = function (newUser, callback) {

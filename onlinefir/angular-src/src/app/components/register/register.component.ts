@@ -30,6 +30,8 @@ export class RegisterComponent implements OnInit {
   aadhar: String;
   password: String;
   confirmPassword: String;
+  userType: String;
+  stationCode: String;
 
   constructor(
     private validateService: ValidateService,
@@ -48,6 +50,8 @@ export class RegisterComponent implements OnInit {
       return false;
     }
 
+    this.userType = "normal";
+    this.stationCode = "nothing";
     const dateOfBirth = new Date(Number(this.year), Number(this.month), Number(this.day));
     const user = {
       firstName: this.firstName,
@@ -65,7 +69,9 @@ export class RegisterComponent implements OnInit {
       country: this.country,
       pincode: this.pincode,
       aadhar: this.aadhar,
-      password: this.password
+      password: this.password,
+      userType: this.userType,
+      stationCode: this.stationCode
     }
 
     // Required fields

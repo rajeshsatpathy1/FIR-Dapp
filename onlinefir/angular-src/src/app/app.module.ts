@@ -22,6 +22,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PlaceFIRComponent } from './components/place-fir/place-fir.component';
 import { TrackFIRComponent } from './components/track-fir/track-fir.component';
 import { OfficerComponent } from './components/officer/officer.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { ApproveComponent } from './components/approve/approve.component';
+import { OfficerDashboardComponent } from './components/officer-dashboard/officer-dashboard.component';
+import { StationComponent } from './components/station/station.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { OfficerComponent } from './components/officer/officer.component';
     DashboardComponent,
     PlaceFIRComponent,
     TrackFIRComponent,
-    OfficerComponent
+    OfficerComponent,
+    AdminComponent,
+    ApproveComponent,
+    OfficerDashboardComponent,
+    StationComponent
   ],
   imports: [
     BrowserModule,
